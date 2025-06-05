@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dr. T. Ganesh Kumar - Profile</title>
+    <link rel="icon" type="image/x-icon" href="data:image/x-icon;base64," />
+    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="" />
+    <link rel="stylesheet" as="style" onload="this.rel='stylesheet'" href="https://fonts.googleapis.com/css2?display=swap&family=Newsreader%3Awght%40400%3B500%3B700%3B800&family=Noto+Sans%3Awght%40400%3B500%3B700%3B900" />
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <style type="text/tailwindcss">
+        body {
+            font-family: Newsreader, "Noto Sans", sans-serif;
+        }
+        .resume-section-link:hover {
+            background-color: rgb(37 99 235 / 0.1);
+            transform: translateX(2px);
+            transition: background-color 0.2s ease-in-out, transform 0.2s ease-in-out;
+        }
+        .resume-section-link.active {
+            background-color: rgb(37 99 235 / 0.15);
+            color: rgb(37 99 235);
+            font-weight: 600;
+        }
+        .header-link:hover {
+            text-decoration: underline;
+            color: rgb(37 99 235);
+        }
+        #rightPanelFrame {
+            opacity: 0;
+            transition: opacity 0.4s ease-in-out;
+        }
+        #rightPanelFrame.loaded {
+            opacity: 1;
+        }
+        /* Custom scrollbar for left panel if needed */
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 6px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #f9fafb;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: rgb(37 99 235 / 0.3);
+            border-radius: 3px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+            background: rgb(37 99 235 / 0.5);
+        }
+    </style>
+    <script>
+        function loadRightPanel(pageUrl, clickedElement) {
+            const iframe = document.getElementById('rightPanelFrame');
+            iframe.classList.remove('loaded'); // Start fade out
+
+            // Remove active class from all links
+            const links = document.querySelectorAll('.resume-section-link');
+            links.forEach(link => link.classList.remove('active'));
+
+            // Add active class to the clicked link
+            if (clickedElement) {
+                clickedElement.classList.add('active');
+            }
+
+            setTimeout(() => {
+                iframe.src = pageUrl;
+                iframe.onload = () => {
+                    iframe.classList.add('loaded'); // Start fade in
+                };
+            }, 200); // Short delay to allow fade out effect
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            // Load personal profile by default and mark it as active
+            const defaultLink = document.querySelector('a[data-pageurl="content/personal_profile.html"]');
+            if (defaultLink) {
+                loadRightPanel('content/personal_profile.html', defaultLink);
+            }
+        });
+    </script>
+</head>
+<body>
+    <div class="relative flex size-full min-h-screen flex-col bg-gray-50 group/design-root overflow-x-hidden">
+      <div class="layout-container flex h-full grow flex-col">
+        <header class="flex items-center justify-between whitespace-nowrap border-b border-solid border-b-[rgb(37 99 235 / 0.2)] px-10 py-3 sticky top-0 bg-gray-50 z-10">
+          <div class="flex items-center gap-4 text-[rgb(37 99 235)]">
+            <!-- You can use an appropriate icon or the IEEE logo here -->
+            <div class="size-5">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z" />
+              </svg>
+            </div>
+            <h2 class="text-[rgb(37 99 235)] text-lg font-bold leading-tight tracking-[-0.015em]">Dr. T. Ganesh Kumar</h2>
+          </div>
+          <div class="flex flex-1 justify-end gap-8">
+            <div class="flex items-center gap-9">
+              <a class="text-[rgb(37 99 235)] text-sm font-medium leading-normal header-link" href="javascript:void(0)" onclick="loadRightPanel('content/personal_profile.html', document.querySelector('a[data-pageurl=\'content/personal_profile.html\']'))">Profile</a>
+              <a class="text-[rgb(37 99 235)] text-sm font-medium leading-normal header-link" href="javascript:void(0)" onclick="loadRightPanel('content/publications.html', document.querySelector('a[data-pageurl=\'content/publications.html\']'))">Publications</a>
+              <a class="text-[rgb(37 99 235)] text-sm font-medium leading-normal header-link" href="javascript:void(0)" onclick="loadRightPanel('content/experience.html', document.querySelector('a[data-pageurl=\'content/experience.html\']'))">Experience</a>
+              <a class="text-[rgb(37 99 235)] text-sm font-medium leading-normal header-link" href="javascript:void(0)" onclick="loadRightPanel('content/contact_placeholder.html', null)">Contact</a>
+            </div>
+
+          </div>
+        </header>
+        <div class="gap-1 px-6 flex flex-1 justify-center py-5 overflow-hidden">
+          <!-- Left Panel: Profile Summary and Navigation -->
+          <div class="layout-content-container flex flex-col w-80 shrink-0 overflow-y-auto custom-scrollbar">
+            <div class="flex p-4 @container">
+              <div class="flex w-full flex-col gap-4 items-center">
+                <div class="flex gap-4 flex-col items-center">
+                  <div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full min-h-32 w-32 border border-gray-200"
+                    style='background-image: url("https://img.icons8.com/pastel-glyph/128/person-male--v2.png"); background-color: #e9edf2;'>
+                    <!-- Placeholder image - replace with actual if available or keep as is -->
+                  </div>
+                  <div class="flex flex-col items-center justify-center">
+                    <p class="text-[#0f141a] text-[22px] font-bold leading-tight tracking-[-0.015em] text-center">Dr. T. Ganesh Kumar</p>
+                    <p class="text-[#56738f] text-base font-normal leading-normal text-center">Professor, School of CS & Engg.</p>
+                    <p class="text-[#56738f] text-sm font-normal leading-normal text-center">Galgotias University, Delhi NCR</p>
+                    <p class="text-[#56738f] text-xs font-normal leading-normal text-center mt-1">IEEE Senior Member</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <h2 class="text-[rgb(37 99 235)] text-[22px] font-bold leading-tight tracking-[-0.015em] px-4 pb-3 pt-5">Resume Sections</h2>
+            <nav class="flex flex-col">
+                <!-- Resume Section Links - Top 7 initially visible, rest scrollable -->
+                <a href="javascript:void(0)" onclick="loadRightPanel('content/personal_profile.html', this);" data-pageurl="content/personal_profile.html" class="resume-section-link flex items-center gap-4 bg-gray-50 px-4 min-h-14 justify-between cursor-pointer">
+                    <p class="text-[#0f141a] text-base font-normal leading-normal flex-1 truncate">Personal Profile</p>
+                    <div class="shrink-0"><div class="text-[#0f141a] flex size-7 items-center justify-center"><svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" fill="currentColor" viewBox="0 0 256 256"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"></path></svg></div></div>
+                </a>
+                <a href="javascript:void(0)" onclick="loadRightPanel('content/education.html', this);" data-pageurl="content/education.html" class="resume-section-link flex items-center gap-4 bg-gray-50 px-4 min-h-14 justify-between cursor-pointer">
+                    <p class="text-[#0f141a] text-base font-normal leading-normal flex-1 truncate">Education</p>
+                    <div class="shrink-0"><div class="text-[#0f141a] flex size-7 items-center justify-center"><svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" fill="currentColor" viewBox="0 0 256 256"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"></path></svg></div></div>
+                </a>
+                <a href="javascript:void(0)" onclick="loadRightPanel('content/experience.html', this);" data-pageurl="content/experience.html" class="resume-section-link flex items-center gap-4 bg-gray-50 px-4 min-h-14 justify-between cursor-pointer">
+                    <p class="text-[#0f141a] text-base font-normal leading-normal flex-1 truncate">Experience</p>
+                    <div class="shrink-0"><div class="text-[#0f141a] flex size-7 items-center justify-center"><svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" fill="currentColor" viewBox="0 0 256 256"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"></path></svg></div></div>
+                </a>
+                <a href="javascript:void(0)" onclick="loadRightPanel('content/phd_supervision.html', this);" data-pageurl="content/phd_supervision.html" class="resume-section-link flex items-center gap-4 bg-gray-50 px-4 min-h-14 justify-between cursor-pointer">
+                    <p class="text-[#0f141a] text-base font-normal leading-normal flex-1 truncate">PhD Supervision</p>
+                    <div class="shrink-0"><div class="text-[#0f141a] flex size-7 items-center justify-center"><svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" fill="currentColor" viewBox="0 0 256 256"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"></path></svg></div></div>
+                </a>
+                <a href="javascript:void(0)" onclick="loadRightPanel('content/awards.html', this);" data-pageurl="content/awards.html" class="resume-section-link flex items-center gap-4 bg-gray-50 px-4 min-h-14 justify-between cursor-pointer">
+                    <p class="text-[#0f141a] text-base font-normal leading-normal flex-1 truncate">Awards & Recognitions</p>
+                    <div class="shrink-0"><div class="text-[#0f141a] flex size-7 items-center justify-center"><svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" fill="currentColor" viewBox="0 0 256 256"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"></path></svg></div></div>
+                </a>
+                <a href="javascript:void(0)" onclick="loadRightPanel('content/publications.html', this);" data-pageurl="content/publications.html" class="resume-section-link flex items-center gap-4 bg-gray-50 px-4 min-h-14 justify-between cursor-pointer">
+                    <p class="text-[#0f141a] text-base font-normal leading-normal flex-1 truncate">Publications</p>
+                    <div class="shrink-0"><div class="text-[#0f141a] flex size-7 items-center justify-center"><svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" fill="currentColor" viewBox="0 0 256 256"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"></path></svg></div></div>
+                </a>
+                <a href="javascript:void(0)" onclick="loadRightPanel('content/patents.html', this);" data-pageurl="content/patents.html" class="resume-section-link flex items-center gap-4 bg-gray-50 px-4 min-h-14 justify-between cursor-pointer">
+                    <p class="text-[#0f141a] text-base font-normal leading-normal flex-1 truncate">Patents</p>
+                    <div class="shrink-0"><div class="text-[#0f141a] flex size-7 items-center justify-center"><svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" fill="currentColor" viewBox="0 0 256 256"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"></path></svg></div></div>
+                </a>
+                <a href="javascript:void(0)" onclick="loadRightPanel('content/projects.html', this);" data-pageurl="content/projects.html" class="resume-section-link flex items-center gap-4 bg-gray-50 px-4 min-h-14 justify-between cursor-pointer">
+                    <p class="text-[#0f141a] text-base font-normal leading-normal flex-1 truncate">Funded R&D Projects</p>
+                    <div class="shrink-0"><div class="text-[#0f141a] flex size-7 items-center justify-center"><svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" fill="currentColor" viewBox="0 0 256 256"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"></path></svg></div></div>
+                </a>
+                <a href="javascript:void(0)" onclick="loadRightPanel('content/professional_activities.html', this);" data-pageurl="content/professional_activities.html" class="resume-section-link flex items-center gap-4 bg-gray-50 px-4 min-h-14 justify-between cursor-pointer">
+                    <p class="text-[#0f141a] text-base font-normal leading-normal flex-1 truncate">Professional Activities</p>
+                    <div class="shrink-0"><div class="text-[#0f141a] flex size-7 items-center justify-center"><svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" fill="currentColor" viewBox="0 0 256 256"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"></path></svg></div></div>
+                </a>
+                <a href="javascript:void(0)" onclick="loadRightPanel('content/conferences_workshops.html', this);" data-pageurl="content/conferences_workshops.html" class="resume-section-link flex items-center gap-4 bg-gray-50 px-4 min-h-14 justify-between cursor-pointer">
+                    <p class="text-[#0f141a] text-base font-normal leading-normal flex-1 truncate">Conferences & Workshops</p>
+                    <div class="shrink-0"><div class="text-[#0f141a] flex size-7 items-center justify-center"><svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" fill="currentColor" viewBox="0 0 256 256"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"></path></svg></div></div>
+                </a>
+                <a href="javascript:void(0)" onclick="loadRightPanel('content/other_info.html', this);" data-pageurl="content/other_info.html" class="resume-section-link flex items-center gap-4 bg-gray-50 px-4 min-h-14 justify-between cursor-pointer">
+                    <p class="text-[#0f141a] text-base font-normal leading-normal flex-1 truncate">Other Information</p>
+                    <div class="shrink-0"><div class="text-[#0f141a] flex size-7 items-center justify-center"><svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" fill="currentColor" viewBox="0 0 256 256"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"></path></svg></div></div>
+                </a>
+            </nav>
+          </div>
+
+          <!-- Right Panel: Content Display -->
+          <div class="layout-content-container flex flex-col max-w-[960px] flex-1 overflow-hidden">
+            <iframe id="rightPanelFrame" class="w-full h-full border-none"></iframe>
+          </div>
+        </div>
+      </div>
+    </div>
+</body>
+</html>
