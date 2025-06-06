@@ -49,8 +49,19 @@
         }
     </style>
     <script>
+        let lastScrollPosition = 0;
+        let currentPage = '';
+
         function loadRightPanel(pageUrl, clickedElement) {
             const iframe = document.getElementById('rightPanelFrame');
+            
+            // Save current scroll position if we're on the same page
+            if (currentPage === pageUrl) {
+                lastScrollPosition = iframe.contentWindow.scrollY;
+            } else {
+                lastScrollPosition = 0;
+            }
+            
             iframe.classList.remove('loaded'); // Start fade out
 
             // Remove active class from all links
@@ -64,8 +75,14 @@
 
             setTimeout(() => {
                 iframe.src = pageUrl;
+                currentPage = pageUrl;
+                
                 iframe.onload = () => {
                     iframe.classList.add('loaded'); // Start fade in
+                    // Restore scroll position after a short delay to ensure content is loaded
+                    setTimeout(() => {
+                        iframe.contentWindow.scrollTo(0, lastScrollPosition);
+                    }, 100);
                 };
             }, 200); // Short delay to allow fade out effect
         }
@@ -82,7 +99,7 @@
 <body>
     <div class="relative flex size-full min-h-screen flex-col bg-gray-50 group/design-root overflow-x-hidden">
       <div class="layout-container flex h-full grow flex-col">
-        <header class="flex items-center justify-between whitespace-nowrap border-b border-solid border-b-[rgb(37 99 235 / 0.2)] px-10 py-3 sticky top-0 bg-gray-50 z-10">
+        <header class="flex items-center justify-between whitespace-nowrap border-b border-solid border-b-blue-200 px-10 py-3 sticky top-0 bg-blue-200 z-10">
           <div class="flex items-center gap-4 text-[rgb(37 99 235)]">
             <!-- You can use an appropriate icon or the IEEE logo here -->
             <div class="size-5">
@@ -95,7 +112,7 @@
           <div class="flex flex-1 justify-end gap-8">
             <div class="flex items-center gap-9">
               <a class="text-[rgb(37 99 235)] text-sm font-medium leading-normal header-link" href="javascript:void(0)" onclick="loadRightPanel('content/personal_profile.html', document.querySelector('a[data-pageurl=\'content/personal_profile.html\']'))">Profile</a>
-              <a class="text-[rgb(37 99 235)] text-sm font-medium leading-normal header-link" href="javascript:void(0)" onclick="loadRightPanel('content/publications.html', document.querySelector('a[data-pageurl=\'content/publications.html\']'))">Publications</a>
+              <a class="text-[rgb(37 99 235)] text-sm font-medium leading-normal header-link" href="javascript:void(0)" onclick="loadRightPanel('content/publications.html', document.querySelector('a[data-pageurl=\'content/publications.html\']'))">Book Publications</a>
               <a class="text-[rgb(37 99 235)] text-sm font-medium leading-normal header-link" href="javascript:void(0)" onclick="loadRightPanel('content/experience.html', document.querySelector('a[data-pageurl=\'content/experience.html\']'))">Experience</a>
               <a class="text-[rgb(37 99 235)] text-sm font-medium leading-normal header-link" href="javascript:void(0)" onclick="loadRightPanel('content/contact_placeholder.html', null)">Contact</a>
             </div>
@@ -121,7 +138,7 @@
                 </div>
               </div>
             </div>
-            <h2 class="text-[rgb(37 99 235)] text-[22px] font-bold leading-tight tracking-[-0.015em] px-4 pb-3 pt-5">Resume Sections</h2>
+            <h2 class="text-[rgb(37 99 235)] text-[22px] font-bold leading-tight tracking-[-0.015em] px-4 pb-3 pt-5">Sections</h2>
             <nav class="flex flex-col">
                 <!-- Resume Section Links - Top 7 initially visible, rest scrollable -->
                 <a href="javascript:void(0)" onclick="loadRightPanel('content/personal_profile.html', this);" data-pageurl="content/personal_profile.html" class="resume-section-link flex items-center gap-4 bg-gray-50 px-4 min-h-14 justify-between cursor-pointer">
@@ -145,7 +162,11 @@
                     <div class="shrink-0"><div class="text-[#0f141a] flex size-7 items-center justify-center"><svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" fill="currentColor" viewBox="0 0 256 256"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"></path></svg></div></div>
                 </a>
                 <a href="javascript:void(0)" onclick="loadRightPanel('content/publications.html', this);" data-pageurl="content/publications.html" class="resume-section-link flex items-center gap-4 bg-gray-50 px-4 min-h-14 justify-between cursor-pointer">
-                    <p class="text-[#0f141a] text-base font-normal leading-normal flex-1 truncate">Publications</p>
+                    <p class="text-[#0f141a] text-base font-normal leading-normal flex-1 truncate">Book Publications</p>
+                    <div class="shrink-0"><div class="text-[#0f141a] flex size-7 items-center justify-center"><svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" fill="currentColor" viewBox="0 0 256 256"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"></path></svg></div></div>
+                </a>
+                <a href="javascript:void(0)" onclick="loadRightPanel('content/Journal.html', this);" data-pageurl="content/Journal.html" class="resume-section-link flex items-center gap-4 bg-gray-50 px-4 min-h-14 justify-between cursor-pointer">
+                    <p class="text-[#0f141a] text-base font-normal leading-normal flex-1 truncate">Journals</p>
                     <div class="shrink-0"><div class="text-[#0f141a] flex size-7 items-center justify-center"><svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" fill="currentColor" viewBox="0 0 256 256"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"></path></svg></div></div>
                 </a>
                 <a href="javascript:void(0)" onclick="loadRightPanel('content/patents.html', this);" data-pageurl="content/patents.html" class="resume-section-link flex items-center gap-4 bg-gray-50 px-4 min-h-14 justify-between cursor-pointer">

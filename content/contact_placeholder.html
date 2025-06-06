@@ -4,16 +4,28 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.tailwindcss.com"></script>
-    <style>body {font-family: 'Noto Sans', sans-serif;}</style>
+    <link rel="stylesheet" href="shared.css">
 </head>
-<body class="p-8 bg-gray-50 text-gray-800">
+<body class="p-8 bg-gray-50">
     <div class="max-w-4xl mx-auto">
-        <h1 class="text-3xl font-bold mb-6 text-blue-600">Contact Information</h1>
+        <h1 class="text-3xl font-bold mb-6 section-heading">Contact Information</h1>
         <div class="bg-white shadow-md rounded-lg p-6">
-            <p class="text-lg">This is a placeholder for contact details.</p>
-            <p class="text-lg mt-2">Email: tganeshphd@yahoo.com</p>
-            <p class="text-lg">Phone: 9442758945</p>
-            <p class="mt-4">Please refer to the Personal Profile section for more details.</p>
+            <div class="space-y-2">
+                <p class="text-lg info-label">E-mail</p>
+                <p class="text-xl info-value">tganeshphd@yahoo.com</p>
+            </div>
+            <div class="mt-4 space-y-2">
+                 <p class="text-lg info-label">Phone</p>
+                <p class="text-xl info-value">9442758945</p>
+            </div>
+             <div class="mt-4 space-y-2">
+                 <p class="text-lg info-label">Address</p>
+                <p class="text-xl info-value">
+                    Professor, School of Computer Science & Engineering,<br>
+                    Galgotias University, Greater Noida, GBU Post,<br>
+                    Delhi NCR-201312
+                </p>
+            </div>
         </div>
     </div>
 </body>
