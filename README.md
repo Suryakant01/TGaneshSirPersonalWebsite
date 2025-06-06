@@ -3,7 +3,7 @@
 
 This repository contains the source code for the personal academic portfolio website of Dr. T. Ganesh Kumar, a Professor at the School of Computer Science & Engineering, Galgotias University.
 
-**[▶️ View the Live Website (placeholder link)](https://your-domain.com)**
+**[▶️ View the Live Website (placeholder link)](https://suryakant01.github.io/TGaneshSirPersonalWebsite/)**
 
 ## About
 
