@@ -1,85 +1,73 @@
-/* Shared styles for all content pages */
+/* --- Foundational Typography & Layout --- */
+/* This new section establishes better defaults for readability */
 body {
     font-family: 'Noto Sans', sans-serif;
-    color: #374151; /* text-gray-700 */
-    background-color: #f8fafc; /* bg-slate-50 */
+    /* CORE CHANGE: Larger base font size for readability */
+    font-size: 18px; 
+    /* CORE CHANGE: Increased line height for comfortable reading */
+    line-height: 1.7; 
+    color: #374151; /* text-gray-700 (from your styles) */
+    background-color: #f8fafc; /* bg-slate-50 (from your styles) */
+    padding: 2rem; /* Adds breathing room around the content */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
-/* Animation classes */
-.fade-in {
-    animation: fadeIn 0.5s ease-in-out;
+/* Add vertical spacing to paragraphs and lists */
+p, ul, ol {
+    margin-bottom: 1.25rem;
 }
 
-.slide-up {
-    animation: slideUp 0.5s ease-out;
-}
+/* --- Your Existing Styles (with minor adjustments for spacing) --- */
 
-.slide-in-right {
-    animation: slideInRight 0.5s ease-out;
-}
+/* Animation classes (Unchanged) */
+.fade-in { animation: fadeIn 0.5s ease-in-out; }
+.slide-up { animation: slideUp 0.5s ease-out; }
+.slide-in-right { animation: slideInRight 0.5s ease-out; }
+.stagger-item { opacity: 0; animation: fadeIn 0.5s ease-in-out forwards; }
 
-.stagger-item {
-    opacity: 0;
-    animation: fadeIn 0.5s ease-in-out forwards;
-}
+/* Animation keyframes (Unchanged) */
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+@keyframes slideUp { from { transform: translateY(20px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+@keyframes slideInRight { from { transform: translateX(20px); opacity: 0; } to { transform: translateX(0); opacity: 1; } }
 
-/* Animation keyframes */
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-    }
-    to {
-        opacity: 1;
-    }
-}
-
-@keyframes slideUp {
-    from {
-        transform: translateY(20px);
-        opacity: 0;
-    }
-    to {
-        transform: translateY(0);
-        opacity: 1;
-    }
-}
-
-@keyframes slideInRight {
-    from {
-        transform: translateX(20px);
-        opacity: 0;
-    }
-    to {
-        transform: translateX(0);
-        opacity: 1;
-    }
-}
-
-/* Stagger animation delays */
+/* Stagger animation delays (Unchanged) */
 .stagger-1 { animation-delay: 0.1s; }
 .stagger-2 { animation-delay: 0.2s; }
 .stagger-3 { animation-delay: 0.3s; }
 .stagger-4 { animation-delay: 0.4s; }
 .stagger-5 { animation-delay: 0.5s; }
 
-/* Main section heading - only for the most important titles */
+/* Main section heading */
 .section-heading {
+    /* CORE CHANGE: Using REM for scalable font size and added margin */
+    font-size: 2.25rem; /* ~36px */
+    margin-bottom: 1.5rem; 
+    line-height: 1.2;
     color: rgb(37 99 235);
     border-bottom: 2px solid rgb(37 99 235 / 0.2);
-    padding-bottom: 0.5rem;
+    padding-bottom: 0.75rem;
     background: linear-gradient(to right, rgb(37 99 235), rgb(59 130 246));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
 
-/* Regular subsection headings - neutral color */
+/* Regular subsection headings */
 .subsection-heading {
+    /* CORE CHANGE: Using REM and added margin for spacing */
+    font-size: 1.5rem; /* ~24px */
+    margin-top: 2.5rem;
+    margin-bottom: 1.25rem;
+    line-height: 1.3;
     color: #1e40af; /* text-blue-800 */
     font-weight: 600;
 }
 
 .card {
+    /* CORE CHANGE: Increased padding to give content more space */
+    padding: 1.5rem 2rem;
     border: 1px solid #e5e7eb; /* border-gray-200 */
+    border-radius: 8px; /* Added for softer edges */
     transition: all 0.3s ease;
     background: linear-gradient(to bottom right, #ffffff, #f8fafc);
 }
@@ -111,45 +99,52 @@ body {
     color: #1e3a8a; /* text-blue-900 */
 }
 
-.list-item {
-    color: #1e3a8a; /* text-blue-900 */
-    position: relative;
-    padding-left: 1.5rem;
+/* Combined .list-item into a more general `ul li` style for ease of use */
+ul {
+    list-style: none;
+    padding-left: 0.5rem;
 }
-
-.list-item::before {
+li {
+    position: relative;
+    padding-left: 1.75rem; /* Make space for the bullet */
+    margin-bottom: 0.75rem;
+    color: #1e3a8a; /* text-blue-900 */
+}
+li::before {
     content: "•";
     color: rgb(37 99 235);
     position: absolute;
     left: 0.5rem;
+    font-size: 1.2rem;
+    line-height: 1.3; /* Better vertical alignment */
 }
 
-.link {
+/* Link styles - applying the .link style to all `a` tags for consistency */
+a, .link {
     color: rgb(37 99 235);
     text-decoration: none;
     transition: all 0.2s ease;
     position: relative;
+    font-weight: 500;
 }
-
-.link:hover {
+a:hover, .link:hover {
     color: rgb(29 78 216); /* text-blue-700 */
     text-decoration: none;
 }
-
-.link::after {
+/* The cool animated underline */
+a::after, .link::after {
     content: '';
     position: absolute;
     width: 100%;
     height: 2px;
-    bottom: -2px;
+    bottom: -3px; /* Adjusted for better spacing */
     left: 0;
     background: linear-gradient(to right, rgb(37 99 235), rgb(59 130 246));
     transform: scaleX(0);
     transform-origin: right;
     transition: transform 0.3s ease;
 }
-
-.link:hover::after {
+a:hover::after, .link:hover::after {
     transform: scaleX(1);
     transform-origin: left;
 }
@@ -164,45 +159,16 @@ body {
     border: 1px solid rgb(37 99 235 / 0.2);
 }
 
-/* Custom scrollbar */
-::-webkit-scrollbar {
-    width: 6px;
-}
+/* Custom scrollbar (Unchanged) */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: #f8fafc; /* bg-slate-50 */ }
+::-webkit-scrollbar-thumb { background: rgb(37 99 235 / 0.3); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: rgb(37 99 235 / 0.5); }
 
-::-webkit-scrollbar-track {
-    background: #f8fafc; /* bg-slate-50 */
-}
-
-::-webkit-scrollbar-thumb {
-    background: rgb(37 99 235 / 0.3);
-    border-radius: 3px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-    background: rgb(37 99 235 / 0.5);
-}
-
-/* Additional utility classes */
-.blue-gradient-bg {
-    background: linear-gradient(to right, rgb(37 99 235 / 0.05), rgb(59 130 246 / 0.05));
-}
-
-.blue-border {
-    border-color: rgb(37 99 235 / 0.2);
-}
-
-.blue-shadow {
-    box-shadow: 0 4px 6px -1px rgb(37 99 235 / 0.1), 0 2px 4px -1px rgb(37 99 235 / 0.06);
-}
-
-.blue-text {
-    color: #1e40af; /* text-blue-800 */
-}
-
-.blue-text-light {
-    color: rgb(37 99 235);
-}
-
-.blue-text-dark {
-    color: #1e3a8a; /* text-blue-900 */
-} 
+/* Utility classes (Unchanged) */
+.blue-gradient-bg { background: linear-gradient(to right, rgb(37 99 235 / 0.05), rgb(59 130 246 / 0.05)); }
+.blue-border { border-color: rgb(37 99 235 / 0.2); }
+.blue-shadow { box-shadow: 0 4px 6px -1px rgb(37 99 235 / 0.1), 0 2px 4px -1px rgb(37 99 235 / 0.06); }
+.blue-text { color: #1e40af; }
+.blue-text-light { color: rgb(37 99 235); }
+.blue-text-dark { color: #1e3a8a; }
